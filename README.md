@@ -15,9 +15,11 @@
 
 核心处理类: com.github.guocay.hj212.business.service.MonitorService.java
 
+测试类：解码与编码示例：com/github/guocay/hj212/ApplicationTest.java
+
 ## 示例处理流程
 1. 启动一个Spring应用, 通过扩展CommandLineRunner接口中启动了一个Netty服务器;
 2. 启动Netty后, 会在上下文中挂一个Handler(com.github.guocay.hj212.netty.NettyServerHandler.java);
 3. 在Handler的 "ChannelRead()" 中, 通过 MonitorService 处理解析数据并存库;
-4. 数据会先存在竖表(MonitorFactorPo.java)里, 再通过 Hj212TransTask.java 的定时任务转存为 横表;
-5. 接收或转换时的异常数据会存储在 MonitorErrorPo.java 所对应的表中;
+4. 接收或转换时的异常数据会存储在 MonitorErrorPo.java 所对应的表中;
+5. 开始你的业务流程
