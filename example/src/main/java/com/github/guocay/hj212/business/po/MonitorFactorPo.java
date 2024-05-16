@@ -26,23 +26,16 @@ public class MonitorFactorPo {
 	@TableId(value="id",type= IdType.AUTO)
     private Long id;
 
+
+	@TableField("analysis_id")
+	private Long analysisId;
+
 	/**
      * 监控设备ID
      */
     @TableField("mn_code")
     private String mnCode;
 
-	/**
-	 * 监控数据PW
-	 */
-	@TableField("pw_code")
-    private String pwCode;
-
-	/**
-     * 命令编码 CN
-     */
-	@TableField("cn_code")
-    private String cnCode;
 
 	/**
      * 监控数据时间

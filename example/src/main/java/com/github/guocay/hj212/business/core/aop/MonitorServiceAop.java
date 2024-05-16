@@ -2,7 +2,7 @@ package com.github.guocay.hj212.business.core.aop;
 
 import com.github.guocay.hj212.business.core.annotaion.MonitorServiceListen;
 import com.github.guocay.hj212.business.core.annotaion.TaskMethod;
-import com.github.guocay.hj212.business.mapper.MonitorErrorMapping;
+import com.github.guocay.hj212.business.mapper.MonitorErrorMapper;
 import com.github.guocay.hj212.business.mapper.MonitorInfoMapper;
 import com.github.guocay.hj212.business.po.MonitorErrorPo;
 import com.github.guocay.hj212.business.po.MonitorInfoPo;
@@ -22,11 +22,11 @@ public class MonitorServiceAop {
 
 	private static final Logger log = LoggerFactory.getLogger(MonitorServiceAop.class);
 
-	private final MonitorErrorMapping errorMapping;
+	private final MonitorErrorMapper errorMapping;
 
 	private final MonitorInfoMapper infoMapper;
 
-	public MonitorServiceAop(MonitorErrorMapping errorMapping, MonitorInfoMapper infoMapper) {
+	public MonitorServiceAop(MonitorErrorMapper errorMapping, MonitorInfoMapper infoMapper) {
 		this.errorMapping = errorMapping;
 		this.infoMapper = infoMapper;
 	}
