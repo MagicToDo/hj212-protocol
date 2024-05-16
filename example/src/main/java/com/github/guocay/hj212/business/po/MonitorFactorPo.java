@@ -31,21 +31,6 @@ public class MonitorFactorPo {
 	private Long analysisId;
 
 	/**
-     * 监控设备ID
-     */
-    @TableField("mn_code")
-    private String mnCode;
-
-
-	/**
-     * 监控数据时间
-     */
-    @TableField("data_time")
-    private String dataTime;
-
-
-
-	/**
      * 监控因子
      */
     @TableField("factor")

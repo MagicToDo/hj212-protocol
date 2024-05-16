@@ -4,15 +4,12 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.github.guocay.hj212.model.CpData;
-import com.github.guocay.hj212.model.DataFlag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author liuyong
@@ -28,8 +25,22 @@ public class MonitorAnalysisPo {
 	/**
 	 * 主键
 	 */
-	@TableId(value="id",type= IdType.AUTO)
+	@TableId(value = "id", type = IdType.AUTO)
 	private Long id;
+
+
+	/**
+	 * 监控设备ID
+	 */
+	@TableField("mn_code")
+	private String mnCode;
+
+
+	/**
+	 * 数据采集时间
+	 */
+	@TableField("data_time")
+	private String dataTime;
 
 	/**
 	 * 请求编号
@@ -68,11 +79,8 @@ public class MonitorAnalysisPo {
 	private String pwCode;
 
 	/**
-	 * 设备唯一标识
+	 * 填入数据库时间
 	 */
-	@TableField("mn_code")
-	private String mnCode;
-
 	@TableField("time")
 	private LocalDateTime time;
 
