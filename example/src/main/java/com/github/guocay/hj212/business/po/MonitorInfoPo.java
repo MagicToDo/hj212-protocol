@@ -1,5 +1,6 @@
 package com.github.guocay.hj212.business.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -22,8 +23,8 @@ import java.time.LocalDateTime;
 @TableName("t_monitor_info")
 public class MonitorInfoPo {
 
-    @TableId("id")
-    private String id;
+	@TableId(value="id",type= IdType.AUTO)
+    private Long id;
 	/**
 	 * 原始内容
 	 */

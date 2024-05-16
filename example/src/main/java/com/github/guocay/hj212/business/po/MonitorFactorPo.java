@@ -1,5 +1,6 @@
 package com.github.guocay.hj212.business.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -22,20 +23,34 @@ public class MonitorFactorPo {
 	/**
      * 主键
      */
-    @TableId("id")
-    private String id;
+	@TableId(value="id",type= IdType.AUTO)
+    private Long id;
 
 	/**
      * 监控设备ID
      */
-    @TableField("mncode")
-    private String mncode;
+    @TableField("mn_code")
+    private String mnCode;
+
+	/**
+	 * 监控数据PW
+	 */
+	@TableField("pw_code")
+    private String pwCode;
+
+	/**
+     * 命令编码 CN
+     */
+	@TableField("cn_code")
+    private String cnCode;
 
 	/**
      * 监控数据时间
      */
     @TableField("data_time")
     private String dataTime;
+
+
 
 	/**
      * 监控因子

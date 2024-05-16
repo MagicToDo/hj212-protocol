@@ -1,5 +1,6 @@
 package com.github.guocay.hj212.business.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -14,11 +15,11 @@ import java.time.LocalDateTime;
 @TableName("t_monitor_error")
 public class MonitorErrorPo {
 
-    @TableId("id")
-    private String id;
+    @TableId(value="id",type= IdType.AUTO)
+    private Long id;
 
     @TableField("info_id")
-    private String infoId;
+    private Long infoId;
 
     @TableField("error")
     private String error;

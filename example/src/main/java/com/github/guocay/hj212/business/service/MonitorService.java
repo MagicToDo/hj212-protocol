@@ -9,6 +9,7 @@ import com.github.guocay.hj212.business.core.annotaion.MonitorServiceListen;
 import com.github.guocay.hj212.business.core.util.Constant;
 import com.github.guocay.hj212.business.mapper.MonitorFactorMapping;
 import com.github.guocay.hj212.model.Pollution;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
@@ -28,9 +29,8 @@ import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROT
  */
 @Service
 @Scope(SCOPE_PROTOTYPE)
+@Slf4j
 public class MonitorService {
-
-	private static final Logger log = LoggerFactory.getLogger(MonitorService.class);
 
     private final MonitorFactorMapping factorMapper;
 
@@ -56,11 +56,13 @@ public class MonitorService {
 			String key = entry.getKey();
 			Pollution value = entry.getValue();
 			MonitorFactorPo monitorFactorPo = MonitorFactorPo.builder().dataStatus(Constant.EFFECTIVE)
-				.mncode(data.getMn())
+				.mnCode(data.getMn())
 				.dataTime(data.getCp().getDataTime())
 				.factor(key)
 				.value(value.getRtd().toString())
 				.time(LocalDateTime.now(Clock.systemDefaultZone()))
+				.pwCode(data.getPw())
+				.cnCode(data.getCn())
 				.build();
 			factorMapper.insert(monitorFactorPo);
 		}
