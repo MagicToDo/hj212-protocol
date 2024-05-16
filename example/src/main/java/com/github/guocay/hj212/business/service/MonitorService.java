@@ -39,18 +39,28 @@ public class MonitorService {
         this.factorMapper = factorMapper;
     }
 
+	/**
+     * 接收hj212协议内容
+     * @param monitorData hj212协议内容
+     * @param ipAddress ip地址
+     * @return hj212协议响应内容
+     * @throws Exception 抛出异常
+     */
     @MonitorServiceListen("hj212协议接收服务")
     public String monitor(String monitorData,String ipAddress) throws Exception{
         String response = null;
 		Data data = t212Mapper.readData(monitorData);
 		data.getCp().getPollution().forEach((key, value) -> {
-			MonitorFactorPo monitorFactorPo = new MonitorFactorPo();
-			monitorFactorPo.setDataStatus(Constant.EFFECTIVE).setMncode(data.getMn());
-			monitorFactorPo.setDataTime(data.getCp().getDataTime()).setFactor(key);
-			monitorFactorPo.setValue(value.getRtd().toString());
-			monitorFactorPo.setTime(LocalDateTime.now(Clock.systemDefaultZone()));
+			MonitorFactorPo monitorFactorPo = MonitorFactorPo.builder().dataStatus(Constant.EFFECTIVE)
+				.mncode(data.getMn())
+				.dataTime(data.getCp().getDataTime())
+				.factor(key)
+				.value(value.getRtd().toString())
+				.time(LocalDateTime.now(Clock.systemDefaultZone()))
+				.build();
 			factorMapper.insert(monitorFactorPo);
 		});
+		//如果数据需要响应，返回响应值
 		if (DataFlag.A.isMarked(data.getDataFlag())) {
 			Data builder = new Data();
 			builder.setQn(data.getQn()).setSt(data.getSt()).setCn(Constant.DATA_RESPONSE);

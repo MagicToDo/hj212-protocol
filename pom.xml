@@ -26,6 +26,7 @@
 		<hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
 		<jakarta.el.version>4.0.2</jakarta.el.version>
 		<jakarta.el-api.version>4.0.0</jakarta.el-api.version>
+		<lombok.version>1.18.32</lombok.version>
     </properties>
 
     <dependencies>
